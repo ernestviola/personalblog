@@ -1,0 +1,7 @@
+#personalityList li {
+    font-size: 1.5em;
+}
+
+#personalityList {
+    list-style-type: square;
+}
