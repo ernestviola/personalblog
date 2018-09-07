@@ -1,0 +1,21 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "Personal Blog API",
+  "main": "handler.js",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.311.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ernest Viola",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ernestviola/personalblog"
+  }
+}
