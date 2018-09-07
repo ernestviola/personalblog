@@ -19,7 +19,8 @@ service: blog-api
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
+  stage: prod
 
 # you can overwrite defaults here
 #  stage: dev
@@ -55,10 +56,13 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  create-blog:
+  create-blog: routes/blogs/create.main
     handler:
       - http:
-        path: blog
+          path: notes
+          method: post
+          cors: true
+          authorizer: aws_iam
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
