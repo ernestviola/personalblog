@@ -1,0 +1,10 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "Personal blog api",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  }
+}
