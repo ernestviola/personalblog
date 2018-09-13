@@ -38,6 +38,15 @@ functions:
           path: blogs/{id}
           method: get
           cors: true
+  
+  listblogs:
+    handler: routes/listblogs.main
+    events:
+      - http: 
+          path: blogs
+          method: get
+          cors: true
+      
 
 resources:
   Resources:
