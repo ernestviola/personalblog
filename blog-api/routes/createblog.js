@@ -1,29 +1,31 @@
-'user strict';
+'use strict';
 
 const uuid = require('uuid');
-const AWS = require('aws-sdk');
+const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-module.exports.create = (event, context, callback) => {
+module.exports.main = (event, context, callback) => {
     const data = JSON.parse(event.body);
 
-    if (typeof data.text !== 'string') {
+    if (typeof data.post !== 'string' || typeof data.title !== 'string') {
         console.error('Validation Failed');
         callback(null, {
             statusCode: 400,
             headers: { 'Content-Type': 'text/plain' },
-            body: 'Couldn\'t create the new post.',
+            body: 'Couldn\'t create the new post. Because something is not a string',
         });
         return;
     }
 
     const params = {
-        TableName: proces.env.DYNAMODB_TABLE,
+        TableName: process.env.DYNAMODB_TABLE,
         Item: {
             id: uuid.v1(),
-            text: data.text,
-            createdAt: date.now()
+            post: data.post,
+            title: data.title,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
         },
     };
 
@@ -47,27 +49,3 @@ module.exports.create = (event, context, callback) => {
         callback(null, response);
     });
 };
-
-
-// import uuid from "uuid";
-// import * as dynamoDbLib from "../libs/dynamodb-lib";
-// import { success, failure } from "../libs/response-lib";
-
-// export async function main(event, context, callback) {
-//     const data = JSON.parse(event.body);
-//     const params = {
-//         TableName: "blogs",
-//         Item: {
-//             postId: uuid.v1(),
-//             content: data.content,
-//             createdAt: Date.now()
-//         }
-//     };
-
-//     try {
-//         await dynamoDbLib.call("put", params);
-//         callback(null, success(params.Item));
-//     } catch (e) {
-//         callback(null, failure({ status: false }));
-//     }
-// }
