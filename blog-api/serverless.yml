@@ -31,6 +31,14 @@ functions:
           method: post
           cors: true
 
+  getblog:
+    handler: routes/getblog.main
+    events:
+      - http:
+          path: blogs/{id}
+          method: get
+          cors: true
+
 resources:
   Resources:
     TodosDynamoDbTable:
