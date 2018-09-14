@@ -37,14 +37,30 @@ functions:
       - http:
           path: blogs/{id}
           method: get
-          cors: true
-  
+          cors: true 
+        
   listblogs:
     handler: routes/listblogs.main
     events:
       - http: 
           path: blogs
           method: get
+          cors: true
+
+  updateblog:
+    handler: routes/updateblog.main
+    events:
+      - http:
+          path: blogs/{id}
+          method: put
+          cors: true 
+
+  deleteblog:
+    handler: routes/deleteblog.main
+    events:
+      - http:
+          path: blogs/{id}
+          method: delete
           cors: true
       
 
