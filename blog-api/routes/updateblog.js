@@ -32,7 +32,6 @@ module.exports.main = (event, context, callback) => {
         ReturnValues: 'ALL_NEW',
     };
 
-    // update the todo in the database
     dynamoDb.update(params, (error, result) => {
         // handle potential errors
         if (error) {
@@ -40,7 +39,7 @@ module.exports.main = (event, context, callback) => {
             callback(null, {
                 statusCode: error.statusCode || 501,
                 headers: { 'Content-Type': 'text/plain' },
-                body: 'Couldn\'t fetch the todo item.',
+                body: 'Couldn\'t fetch the blog post.',
             });
             return;
         }
