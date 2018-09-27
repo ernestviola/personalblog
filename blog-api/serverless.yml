@@ -30,6 +30,7 @@ functions:
           path: blogs
           method: post
           cors: true
+          authorizer: aws_iam
 
   getblog:
     handler: routes/getblog.main
@@ -53,7 +54,8 @@ functions:
       - http:
           path: blogs/{id}
           method: put
-          cors: true 
+          cors: true
+          authorizer: aws_iam
 
   deleteblog:
     handler: routes/deleteblog.main
@@ -62,6 +64,7 @@ functions:
           path: blogs/{id}
           method: delete
           cors: true
+          authorizer: aws_iam
       
 
 resources:
