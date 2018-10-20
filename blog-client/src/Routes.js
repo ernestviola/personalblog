@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
+import AppliedRoute from "./components/AppliedRoute";
 
 //Routes
 import Home from './containers/Home';
@@ -9,9 +10,10 @@ import Projects from './containers/Projects';
 import Login from './containers/Login';
 import NotFound from './containers/NotFound';
 
-export default () =>
+export default ({ childProps }) =>
     <Switch>
-        <Route path="/" exact component={Home} />
+        <AppliedRoute path="/" exact component={Home} props={childProps} />
+        <AppliedRoute path="/login" exact component={Login} props={childProps} />
         <Route path="/blog" exact component={BlogHome} />
         <Route path="/projects" exact component={Projects} />
         <Route path="/login" exact component={Login} />

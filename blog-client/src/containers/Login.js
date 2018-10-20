@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
+import { Auth } from 'aws-amplify';
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +13,7 @@ export default class Login extends Component {
     }
 
     validateForm() {
-        return this.state.username.length > 0 && this.state.password.length > 0;
+        return !(this.state.username.length > 0 && this.state.password.length > 0);
     }
 
     handleChange = event => {
@@ -20,8 +22,15 @@ export default class Login extends Component {
         });
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
+
+        try {
+            await Auth.signIn(this.state.username, this.state.password);
+            this.props.userHasAuthenticated(true);
+        } catch (e) {
+            alert(e.message);
+        }
     }
 
     render() {
