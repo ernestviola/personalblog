@@ -5,6 +5,7 @@ import AppliedRoute from "./components/AppliedRoute";
 
 //Routes
 import Home from './containers/Home';
+import NewBlog from './containers/NewBlog';
 import BlogHome from './containers/BlogHome';
 import Projects from './containers/Projects';
 import Login from './containers/Login';
@@ -13,6 +14,7 @@ import NotFound from './containers/NotFound';
 export default ({ childProps }) =>
     <Switch>
         <AppliedRoute path="/" exact component={Home} props={childProps} />
+        <AppliedRoute path="/blog/new" exact component={NewBlog} props={childProps} />
         <AppliedRoute path="/login" exact component={Login} props={childProps} />
         <Route path="/blog" exact component={BlogHome} />
         <Route path="/projects" exact component={Projects} />
